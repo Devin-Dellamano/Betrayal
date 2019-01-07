@@ -2,23 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOxBellows : BaseCharacter
+public class PlayerBrandonJaspers : BaseCharacter
 {
-	enum SpeedStat { Skull = 0, NumOne = 2, NumTwo = 2, NumThree = 2, NumFour = 3, StartingSpeed = 4, NumSix = 5, NumSeven = 5, NumEight = 6 };
-	enum MightStat { Skull = 0, NumOne = 4, NumTwo = 5, StartingMight = 5, NumFour = 6, NumFive = 6, NumSix = 7, NumSeven = 8, NumEight = 8 };
-	enum SanityStat { Skull = 0, NumOne = 2, NumTwo = 2, StartingSanity = 3, NumFour = 4, NumFive = 5, NumSix = 5, NumSeven = 6, NumEight = 7 };
-	enum KnowledgeStat { Skull = 0, NumOne = 2, NumTwo = 2, StartingKnowledge = 3, NumFour = 3, NumFive = 5, NumSix = 5, NumSeven = 6, NumEight = 6 };
-
-	public PlayerOxBellows()
+	enum SpeedStat
 	{
-		characterName = "Ox Bellows";
-		age = 23;
-		height = "6\'4\"";
-		weight = 288;
-		hobbies = new string[2];
-		hobbies[0] = "Football";
-		hobbies[1] = "Shiny Objects";
-		birthday = "October 18";
+		Skull = 0,
+		NumOne = 3,
+		NumTwo = 4,
+		StartingSpeed = 4,
+		NumFour = 4,
+		NumFive = 5,
+		NumSix = 6,
+		NumSeven = 7,
+		NumEight = 8
+	};
+	enum MightStat
+	{
+		Skull = 0,
+		NumOne = 2,
+		NumTwo = 3,
+		NumThree = 3,
+		StartingMight = 4,
+		NumFive = 5,
+		NumSix = 6,
+		NumSeven = 6,
+		NumEight = 7
+	};
+	enum SanityStat
+	{
+		Skull = 0,
+		NumOne = 3,
+		NumTwo = 3,
+		NumThree = 3,
+		StartingSanity = 4,
+		NumFive = 5,
+		NumSix = 6,
+		NumSeven = 7,
+		NumEight = 8
+	};
+	enum KnowledgeStat
+	{
+		Skull = 0,
+		NumOne = 1,
+		NumTwo = 3,
+		StartingKnowledge = 3,
+		NumFour = 5,
+		NumFive = 5,
+		NumSix = 6,
+		NumSeven = 6,
+		NumEight = 7
+	};
+
+	public PlayerBrandonJaspers()
+	{
+		color = "green";
+		characterName = "Brandon Jaspers";
+		age = 12;
+		height = "5\'1\"";
+		weight = 109;
+		hobbies = new string[3];
+		hobbies[0] = "Computers";
+		hobbies[1] = "Camping";
+		hobbies[2] = "Hockey";
+		birthday = "August 2";
 
 		speed = (int)SpeedStat.StartingSpeed;
 		might = (int)MightStat.StartingMight;
@@ -28,16 +74,18 @@ public class PlayerOxBellows : BaseCharacter
 
 	// Start is called before the first frame update
 	void Start()
-    {
-        
-    }
+	{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	}
 
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
+
+	// calls the parent function first
+	// then determine the speed stat for the character
 	override protected int ModifySpeed(int damage)
 	{
 		int speedCalc = base.ModifySpeed(damage);
@@ -49,11 +97,11 @@ public class PlayerOxBellows : BaseCharacter
 		else if (speedCalc == 2)
 			speed = (int)SpeedStat.NumTwo;
 		else if (speedCalc == 3)
-			speed = (int)SpeedStat.NumThree;
+			speed = (int)SpeedStat.StartingSpeed;
 		else if (speedCalc == 4)
 			speed = (int)SpeedStat.NumFour;
 		else if (speedCalc == 5)
-			speed = (int)SpeedStat.StartingSpeed;
+			speed = (int)SpeedStat.NumFive;
 		else if (speedCalc == 6)
 			speed = (int)SpeedStat.NumSix;
 		else if (speedCalc == 7)
@@ -61,9 +109,11 @@ public class PlayerOxBellows : BaseCharacter
 		else if (speedCalc >= 8)
 			speed = (int)SpeedStat.NumEight;
 
-		return 0;
+		return speed;
 	}
 
+	// calls the parent function first
+	// then determine the might stat for the character
 	override protected int ModifyMight(int damage)
 	{
 		int mightCalc = base.ModifyMight(damage);
@@ -75,9 +125,9 @@ public class PlayerOxBellows : BaseCharacter
 		else if (mightCalc == 2)
 			might = (int)MightStat.NumTwo;
 		else if (mightCalc == 3)
-			might = (int)MightStat.StartingMight;
+			might = (int)MightStat.NumThree;
 		else if (mightCalc == 4)
-			might = (int)MightStat.NumFour;
+			might = (int)MightStat.StartingMight;
 		else if (mightCalc == 5)
 			might = (int)MightStat.NumFive;
 		else if (mightCalc == 6)
@@ -87,9 +137,11 @@ public class PlayerOxBellows : BaseCharacter
 		else if (mightCalc >= 8)
 			might = (int)MightStat.NumEight;
 
-		return 0;
+		return might;
 	}
 
+	// calls the parent function first
+	// then determine the sanity stat for the character
 	override protected int ModifySanity(int damage)
 	{
 		int sanityCalc = base.ModifySanity(damage);
@@ -101,9 +153,9 @@ public class PlayerOxBellows : BaseCharacter
 		else if (sanityCalc == 2)
 			sanity = (int)SanityStat.NumTwo;
 		else if (sanityCalc == 3)
-			sanity = (int)SanityStat.StartingSanity;
+			sanity = (int)SanityStat.NumThree;
 		else if (sanityCalc == 4)
-			sanity = (int)SanityStat.NumFour;
+			sanity = (int)SanityStat.StartingSanity;
 		else if (sanityCalc == 5)
 			sanity = (int)SanityStat.NumFive;
 		else if (sanityCalc == 6)
@@ -113,9 +165,11 @@ public class PlayerOxBellows : BaseCharacter
 		else if (sanityCalc >= 8)
 			sanity = (int)SanityStat.NumEight;
 
-		return 0;
+		return sanity;
 	}
 
+	// calls the parent function first
+	// then determine the knowledge stat for the character
 	override protected int ModifyKnowledge(int damage)
 	{
 		int knowledgeCalc = base.ModifyKnowledge(damage);
@@ -139,6 +193,6 @@ public class PlayerOxBellows : BaseCharacter
 		else if (knowledgeCalc >= 8)
 			knowledge = (int)KnowledgeStat.NumEight;
 
-		return 0;
+		return knowledge;
 	}
 }

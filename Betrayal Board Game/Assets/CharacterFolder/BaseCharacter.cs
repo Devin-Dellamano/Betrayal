@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseCharacter : MonoBehaviour
 {
 	// general stats
+	public string color = "";
     public string characterName = "";
 	public int age = 0;
 	public string height = "";
